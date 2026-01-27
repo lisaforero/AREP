@@ -53,8 +53,7 @@ The notebook includes:
 
 ## AWS SageMaker execution evidence
 
-Both notebooks were uploaded to **AWS SageMaker** and executed successfully.  
-All cells ran without errors and produced the expected outputs and plots.
+The two notebooks were uploaded to **AWS SageMaker** using the Code Editor in SageMaker Studio. A folder named "regression" was created in the working directory, and both .ipynb files were uploaded into this folder from the local machine. Both notebooks were executed successfully, with all cells running without errors and producing the expected outputs and plots.
 
 ### Screenshots
 
