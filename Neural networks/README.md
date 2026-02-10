@@ -48,17 +48,56 @@ This dataset was chosen because:
 
 ## Architecture diagrams
 
+**Baseline Model – Fully Connected Network**
 
+```mermaid
+flowchart LR
+    A[Input Image 
+    224x224x3] --> B[Flatten Layer]
+    B --> C[Dense Layer 
+    512 units]
+    C --> D[ReLU Activation]
+    D --> E[Dense Layer 
+    256 units]
+    E --> F[ReLU Activation]
+    F --> G[Output Layer 
+    90 classes]
+```
+- No convolutional layers
+
+- Treats images as simple vectors
+
+**Convolutional Neural Network (CNN)**
+
+```mermaid
+flowchart LR
+    A[Input Image 
+224×224×3] --> B[Conv2D 
+32 filters, 3×3 + ReLU]
+    B --> C[Max Pooling]
+    C --> D[Conv2D 
+64 filters, 3×3 + ReLU]
+    D --> E[Max Pooling]
+    E --> F[Conv2D 
+128 filters, 3×3 + ReLU]
+    F --> G[Max Pooling]
+    G --> H[Flatten]
+    H --> I[Dense Layer 
+256 units]
+    I --> J[Output Layer 
+90 classes]
+```
+This architecture preserves spatial structure and learns hierarchical visual features.
 
 ## Experimental results
 
 **Baseline Model**
 
-- Parameters: 77M
+- Parameters: 77225306
 
-- Validation Accuracy: ≈ 2%
+- Validation Accuracy: 2.31%
 
-- Loss remained around the value expected for random guessing
+- Loss remained around the value expected for random guessing.
 
 - The baseline model was unable to learn meaningful patterns from image data.
 
