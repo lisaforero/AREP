@@ -45,7 +45,8 @@ Make sure you have the following installed:
 First, clone this repository and enter the project directory:
 
 ```
-git clone https://github.com/lisaforero/Microframework_web.git
+git clone https://github.com/lisaforero/AREP.git
+cd AREP
 cd Microframework_web
 ```
 
