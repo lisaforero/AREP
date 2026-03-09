@@ -17,7 +17,7 @@ public class App {
 
         System.out.println("Loading components ...");
 
-        File folder = new File("target/classes");
+        File folder = new File(App.class.getClassLoader().getResource("").getPath());
         scanClasses(folder, "");
 
         for (String path : controllerMethods.keySet()) {
