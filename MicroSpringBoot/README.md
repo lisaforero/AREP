@@ -79,3 +79,10 @@ Hello Lisa
 
 ## AWS deployment evidence
 
+This section contains the evidence of deploying the MicroSB server on an AWS instance.
+
+![Server Execution on AWS](screenshots/execution.png)
+
+![Endpoint Access from Browser](screenshots/endpoint1.png)
+
+![Endpoint Access from Browser](screenshots/endpoint2.png)
