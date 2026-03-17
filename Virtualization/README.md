@@ -20,13 +20,14 @@ The architecture is built upon a hybrid routing engine that manages both dynamic
 
 ## Class design
  
-- `HttpServer`: The core engine that handles multi-threaded socket connections.
+- `HttpServer`: The core engine of the framework. It manages the ServerSocket and implements the Thread-per-Request model. For every incoming connection, it spawns a new execution thread, allowing the server to handle multiple clients concurrently without blocking.
 
 - `GreetingController`: Implements dynamic logic using @RequestParam to personalize greetings.
 
 - `HelloController`: Provides system-level endpoints such as /pi, /hello, /shutdown, and others.
+  - Contains the logic for the `/shutdown` endpoint. To ensure the server doesn't "hang" the client, it initiates a Separate Shutdown Thread with a 1-second delay. This allows the server to send a final "Success" response back to the browser before the JVM process is terminated. 
 
-- `App`: The bootstrap class that initializes component scanning and starts the service.
+- `App`: The bootstrap or entry point of the application. It performs the Component Scanning by searching the project's packages for classes marked with @RestController. Once found, it registers the routes and starts the HttpServer, effectively "wiring" the entire framework together.
 
 ## Deployment and running
 
