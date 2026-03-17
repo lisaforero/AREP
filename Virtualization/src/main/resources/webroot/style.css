@@ -1,0 +1,121 @@
+:root {
+    --primary-lila: #9b59b6;
+    --secondary-lila: #af7ac5;
+    --dark-lila: #7d3c98;
+    --light-lila: #f4ecf7;
+    --bg-color: #f3f0f5; /* Un fondo grisáceo lila muy suave */
+    --text-color: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(135deg, var(--dark-lila), var(--primary-lila));
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.container {
+    max-width: 900px;
+    margin: -30px auto 2rem; /* Sube un poco para entrar en el header */
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 16px rgba(125, 60, 152, 0.1);
+    border-top: 5px solid var(--secondary-lila);
+}
+
+h3 {
+    margin-top: 0;
+    color: var(--dark-lila);
+    border-bottom: 1px solid var(--light-lila);
+    padding-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid var(--light-lila);
+    border-radius: 6px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-lila);
+    outline: none;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-lila);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-lila);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--dark-lila);
+    border: 2px solid var(--secondary-lila);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-lila);
+    color: white;
+}
+
+.response-area {
+    background-color: #faf8fb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px dashed var(--secondary-lila);
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    min-height: 40px;
+    color: #444;
+}
+
+.btn-danger {
+    background-color: #ff4757;
+    color: white;
+    width: 100%;
+}
+
+.shutdown {
+    border-top-color: #ff4757;
+    text-align: center;
+}

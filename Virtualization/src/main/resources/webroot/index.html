@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Framework Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Server Control Panel</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>Greeting Controller</h3>
+            <p>This component uses <strong>@RequestParam</strong> to customize the message:</p>
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Enter your name here...">
+                <button class="btn-primary" onclick="callGreeting()">Send Greeting</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>System Endpoints</h3>
+            <p>Quick actions from the HelloController:</p>
+            <div class="button-grid">
+                <button class="btn-secondary" onclick="callEndpoint('/status')">Status</button>
+                <button class="btn-secondary" onclick="callEndpoint('/pi')">PI Value</button>
+                <button class="btn-secondary" onclick="callEndpoint('/hello')">Hello World</button>
+                <button class="btn-secondary" onclick="callEndpoint('/time')">Server Time</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Server Output</h3>
+            <div id="response" class="response-area">Waiting for command...</div>
+        </div>
+
+        <div class="card shutdown">
+            <h3>System Administration</h3>
+            <p>Warning: This will stop the server process.</p>
+            <button class="btn-danger" onclick="confirmShutdown()">Shutdown Server</button>
+        </div>
+    </div>
+
+    <script>
+        function callGreeting() {
+            const nameValue = document.getElementById('name').value;
+            const url = nameValue ? `/greeting?name=${nameValue}` : '/greeting';
+            callEndpoint(url);
+        }
+
+        function callEndpoint(url) {
+            const respDiv = document.getElementById('response');
+            respDiv.classList.add('loading');
+            respDiv.innerText = "Processing request on server...";
+            
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    respDiv.innerText = data;
+                    respDiv.classList.remove('loading');
+                })
+                .catch(err => {
+                    respDiv.innerText = "Error: Server not responding.";
+                    respDiv.classList.remove('loading');
+                });
+        }
+
+        function confirmShutdown() {
+            if (confirm("Are you sure you want to shut down the server remotely?")) {
+                callEndpoint('/shutdown');
+                setTimeout(() => {
+                    document.body.innerHTML = "<div class='offline-msg'><h1>Server Offline</h1><p>The session has ended.</p></div>";
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
